@@ -1,9 +1,5 @@
 # Test de detecteur de cheat minecraft
 
-# file = open("C:/Users/twitm/AppData/Roaming/.az-client/logs/latest.log", "r")
-# files = file.readlines()
-# List = []
-
 #                               Utils
 
 
@@ -56,6 +52,4 @@ if __name__ == '__main__':
     def Main():
         menu = int(input(menuTxt()))
         menuInterract(menu)
-
-
     Main()
