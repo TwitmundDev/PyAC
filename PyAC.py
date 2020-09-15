@@ -1,6 +1,16 @@
 # Test de detecteur de cheat minecraft
+# Imports
+import os
+
 
 #                               Utils
+
+
+def Jumps(n):
+    for n in range(n):
+        if n == 1:
+            print("\n")
+        print("\n")
 
 
 def menuTxt():
@@ -17,6 +27,10 @@ def menuInterract(value):
         return checkDirectory()
     else:
         return
+
+
+def getMinercaftPath():
+    return setMinecraftPath()
 
 
 def setMinecraftPath():
@@ -37,19 +51,52 @@ def checkFile(file_path, word_list):
 #                                       Checker
 
 def logAnalyzer():
+    Jumps(1)
     logWords = ["_Tr1_gran_vitece", "Wurst", "Metro"]
-    result = checkFile(setMinecraftPath() + "/logs/latest.log", logWords)
+    result = checkFile(getMinercaftPath() + "/logs/latest.log", logWords)
+    Jumps(1)
     print("Log Analyzer \n :")
     print(result)
+    Jumps(1)
     return menuInterract(0)
 
 
 def checkDirectory():
-    print("Pas fini mdr")
+    McPath = getMinercaftPath()
+    FoundedMinecraftDir = []
+    VerDir = McPath + "/version"
+    FoundedVerDir = []
+
+    # Check dans le .minecraft
+    if os.path.exists(McPath + "/Wurst"):
+        FoundedMinecraftDir.insert(0, "Wurst")
+    if os.path.exists(McPath + "/Metro"):
+        FoundedMinecraftDir.insert(0, "Metro")
+    if os.path.exists(McPath + "/Metro 5.1"):
+        FoundedMinecraftDir.insert(0, "Metro 5.1")
+    if os.path.exists(McPath + "/Metro 6.0"):
+        FoundedMinecraftDir.insert(0, "Metro 6.0")
+    if os.path.exists(McPath + "/Huzuni"):
+        FoundedMinecraftDir.insert(0, "Huzuni")
+
+
+    # Check dans les .minecraft/version
+    if os.path.exists(VerDir + "Wurst"):
+        FoundedVerDir.insert(0, "Wurst")
+
+    Jumps(1)
+    print("Founded in .Minecraft :")
+    print(FoundedMinecraftDir)
+    Jumps(1)
+    print("Founded in .minecraft/version")
+    print(FoundedVerDir)
+    return menuInterract(0)
 
 
 if __name__ == '__main__':
     def Main():
         menu = int(input(menuTxt()))
         menuInterract(menu)
+
+
     Main()
