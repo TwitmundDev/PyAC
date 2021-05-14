@@ -2,6 +2,7 @@
 # Imports
 import os
 
+
 #                               Utils
 
 def Jumps(n):
@@ -12,7 +13,7 @@ def Jumps(n):
 
 
 def menuTxt():
-    txtCmd = "Log Analyser 1 |\nFile Analyser 2 | \n"
+    txtCmd = "Log Analyser 1 |\nFile Analyser 2 | \nRessources pack checker 3 | \n"
     return txtCmd
 
 
@@ -23,6 +24,8 @@ def menuInterract(value):
         return logAnalyzer()
     elif value == 2:
         return checkDirectory()
+    elif value == 3:
+        return ressourcesPackAnalyzer()
     else:
         return
 
@@ -34,7 +37,7 @@ def getMinercaftPath():
 def setMinecraftPath():
     key = '%appdata%'
     # minecraftFilePath = str(input(".Minecraft Path directory ")).replace('\\', '/')
-    minecraftFilePath = os.getenv("APPDATA") + "/.minecraft"
+    minecraftFilePath = os.getenv("APPDATA").replace("\\", "/") + "/.minecraft"
     return minecraftFilePath
 
 
@@ -49,6 +52,15 @@ def checkFile(file_path, word_list):
 
 
 #                                       Checker
+
+def ressourcesPackAnalyzer():
+
+    keyWords = ["xray"]
+    result = checkFile(getMinercaftPath() + "/resourcepacks/", keyWords)
+    Jumps(1)
+    print("Xray pack founded : \n")
+    print(result)
+
 
 def logAnalyzer():
     Jumps(1)
@@ -78,7 +90,6 @@ def checkDirectory():
         FoundedMinecraftDir.insert(0, "Metro 6.0")
     if os.path.exists(McPath + "/Huzuni"):
         FoundedMinecraftDir.insert(0, "Huzuni")
-
 
     # Check dans les .minecraft/version
     if os.path.exists(VerDir + "Wurst"):
