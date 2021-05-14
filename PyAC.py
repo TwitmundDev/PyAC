@@ -2,9 +2,7 @@
 # Imports
 import os
 
-
 #                               Utils
-
 
 def Jumps(n):
     for n in range(n):
@@ -34,7 +32,9 @@ def getMinercaftPath():
 
 
 def setMinecraftPath():
-    minecraftFilePath = str(input(".Minecraft Path directory ")).replace('\\', '/')
+    key = '%appdata%'
+    # minecraftFilePath = str(input(".Minecraft Path directory ")).replace('\\', '/')
+    minecraftFilePath = os.getenv("APPDATA") + "/.minecraft"
     return minecraftFilePath
 
 
